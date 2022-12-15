@@ -1,7 +1,7 @@
 import query from "../db/index.js";
 
 //function to get filtered properties
-export async function getPropertiesByFilter(rooms, property_type, price) {
+export async function getProperties(rooms, property_type, price) {
   let sqlStatement = `SELECT * FROM properties `;
 
   if (rooms || property_type || price) {
