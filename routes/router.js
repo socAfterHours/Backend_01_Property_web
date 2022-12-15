@@ -1,16 +1,11 @@
 import express from "express";
 
-import { getAllProperties, getPropertiesByFilter } from "../models/models.js";
+import { getPropertiesByFilter } from "../models/models.js";
 
 const propertyRouter = express.Router();
-//route to get all properties
-propertyRouter.get("/", async function (req, res) {
-  const properties = await getAllProperties();
-  res.status(200).json({ success: true, payload: properties });
-});
 
-//route to get filtered properties
-propertyRouter.get("/byFilter", async function (req, res) {
+//route to get all properties/ filtered properties
+propertyRouter.get("/", async function (req, res) {
   const rooms = req.query.rooms;
   console.log("rooms", rooms);
   const property_type = req.query.property_type;
