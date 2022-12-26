@@ -6,12 +6,13 @@ const propertyRouter = express.Router();
 
 //route to get all properties/ filtered properties
 propertyRouter.get("/", async function (req, res) {
-  const rooms = req.query.rooms;
-  console.log("rooms", rooms);
-  const property_type = req.query.property_type;
-  console.log("property_type", property_type);
-  const price = req.query.price;
-  const properties = await getProperties(rooms, property_type, price);
+  
+  const properties = await getProperties(
+    req.query.rooms,
+    req.query.property_type,
+    req.query.price,
+    req.query.location
+  );
   res.status(200).json({ success: true, payload: properties });
 });
 
